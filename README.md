@@ -4,8 +4,8 @@ Práctica del curso de https://www.udemy.com/course/la-web-empieza-aqui-typescri
 
 Dependencias que utiliza
 
-ngx-bootstrap
-Firesfire
-ngx-spinner
-sweetalert2
+* ngx-bootstrap
+* Firesfire
+* ngx-spinner
+* sweetalert2
 
