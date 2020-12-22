@@ -1,0 +1,42 @@
+<div class="container">
+
+    <div class="text-center">
+        <img  src="assets/logo.png" alt="">
+        <h3>Bienvenido, por favor ingrese sus datos</h3>
+    </div>
+  
+    <form name="formularioLogin" [formGroup]="formularioLogin">
+        <div class="form-group">
+            <label for="email">Correo Electronico</label>
+            <input type="email" class="form-control" id="email" formControlName="email" aria-describedby="emailHelp" placeholder="Ingrese su correo electronico">
+             <div *ngIf="formularioLogin.controls['email'].invalid && formularioLogin.controls['email'].dirty" class="alert alert-danger" role="alert">
+                <span *ngIf="formularioLogin.controls['email'].errors?.required">  Correo es requerido</span>
+                <span *ngIf="formularioLogin.controls['email'].errors?.email">Correo no es Valido</span>
+            </div>
+        
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" (keyUp.enter)="ingresar()" class="form-control" id="password" formControlName="password" placeholder="Ingrese su contraseña">
+            <div *ngIf="formularioLogin.controls['password'].invalid && formularioLogin.controls['password'].dirty" class="alert alert-danger" role="alert">
+                <span *ngIf="formularioLogin.controls['password'].errors?.required">La contraseña es requerida</span> 
+                <span *ngIf="formularioLogin.controls['password'].errors?.minlength">La contraseña debe ser mayor que 5 caracteres</span> 
+            </div>
+            
+        </div>
+
+        <button type="submit" (click)="ingresar()" [disabled]="!formularioLogin.valid"  class="btn btn-primary">Ingresar</button>
+    </form>
+
+    <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
+        {{textoError}}
+      </div>
+
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" 
+    size = "medium" color = "#444444" 
+    type = "ball-spin-clockwise" 
+    [fullScreen] = "true">
+        <p style="color: rgb(255, 255, 255)" > Ingresando al sistema </p>
+</ngx-spinner>
